@@ -14,14 +14,16 @@ Summary: a set of utilities and libraries for handling ELF (Executable and Linka
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/elfutils-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/elfutils-feedstock)
-OSX: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/elfutils-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/elfutils-feedstock)
+![OSX disabled](https://img.shields.io/badge/OSX-disabled-lightgrey.svg)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/elfutils/badges/version.svg)](https://anaconda.org/conda-forge/elfutils)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/elfutils/badges/downloads.svg)](https://anaconda.org/conda-forge/elfutils)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-elfutils-green.svg)](https://anaconda.org/conda-forge/elfutils) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/elfutils.svg)](https://anaconda.org/conda-forge/elfutils) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/elfutils.svg)](https://anaconda.org/conda-forge/elfutils) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/elfutils.svg)](https://anaconda.org/conda-forge/elfutils) |
 
 Installing elfutils
 ===================

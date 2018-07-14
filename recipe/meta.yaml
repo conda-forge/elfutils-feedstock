@@ -17,12 +17,14 @@ build:
 
 requirements:
   build:
-    - toolchain
-    - zlib 1.2.*
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - zlib
     - m4
 
   run:
-    - zlib 1.2.*
+    - zlib
 
 about:
   home: https://fedorahosted.org/elfutils/

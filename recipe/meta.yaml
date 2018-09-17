@@ -33,6 +33,7 @@ test:
 about:
   home: https://fedorahosted.org/elfutils/
   license: LGPL-3.0
+  license_file: COPYING-LGPLV3
   summary: 'a set of utilities and libraries for handling ELF (Executable and Linkable Format) files.'
 
 extra:

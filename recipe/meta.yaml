@@ -1,6 +1,6 @@
 {% set name = "elfutils" %}
-{% set version = "0.173" %}
-{% set sha256 = "b76d8c133f68dad46250f5c223482c8299d454a69430d9aa5c19123345a000ff" %}
+{% set version = "0.174" %}
+{% set sha256 = "cdf27e70076e10a29539d89e367101d516bc4aa11b0d7777fe52139e3fcad08a" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1001
+  number: 0
   skip: True  # [not linux]
 
 requirements:

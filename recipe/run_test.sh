@@ -13,5 +13,5 @@ eu-strings --help
 eu-strip --help
 eu-unstrip --help
 
-gcc -o /tmp/test_libdwarf $RECIPE_DIR/test_libdwarf.c $(pkg-config --cflags libdw) $(pkg-config --libs libdw)
+eval "${CC} -o /tmp/test_libdwarf $RECIPE_DIR/test_libdwarf.c $(pkg-config --cflags libdw) $(pkg-config --libs libdw)"
 /tmp/test_libdwarf

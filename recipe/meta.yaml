@@ -26,6 +26,10 @@ requirements:
   run:
     - zlib
 
+test:
+  requires:
+    - {{ compiler('c') }}
+
 about:
   home: https://fedorahosted.org/elfutils/
   license: LGPL-3.0

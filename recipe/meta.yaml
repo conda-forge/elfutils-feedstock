@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1001
   skip: True  # [not linux]
 
 requirements:
@@ -26,9 +26,14 @@ requirements:
   run:
     - zlib
 
+test:
+  requires:
+    - {{ compiler('c') }}
+
 about:
   home: https://fedorahosted.org/elfutils/
   license: LGPL-3.0
+  license_file: COPYING-LGPLV3
   summary: 'a set of utilities and libraries for handling ELF (Executable and Linkable Format) files.'
 
 extra:

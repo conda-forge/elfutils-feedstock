@@ -1,6 +1,6 @@
 {% set name = "elfutils" %}
-{% set version = "0.176" %}
-{% set sha256 = "eb5747c371b0af0f71e86215a5ebb88728533c3a104a43d4231963f308cd1023" %}
+{% set version = "0.178" %}
+{% set sha256 = "31e7a00e96d4e9c4bda452e1f2cdac4daf8abd24f5e154dee232131899f3a0f2" %}
 
 package:
   name: {{ name|lower }}

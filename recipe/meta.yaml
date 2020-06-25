@@ -1,6 +1,6 @@
 {% set name = "elfutils" %}
-{% set version = "0.176" %}
-{% set sha256 = "eb5747c371b0af0f71e86215a5ebb88728533c3a104a43d4231963f308cd1023" %}
+{% set version = "0.180" %}
+{% set sha256 = "b827b6e35c59d188ba97d7cf148fa8dc6f5c68eb6c5981888dfdbb758c0b569d" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [not linux]
+  skip: true  # [not linux]
 
 requirements:
   build:
@@ -34,7 +34,7 @@ about:
   home: https://fedorahosted.org/elfutils/
   license: LGPL-3.0
   license_file: COPYING-LGPLV3
-  summary: 'a set of utilities and libraries for handling ELF (Executable and Linkable Format) files.'
+  summary: a set of utilities and libraries for handling ELF (Executable and Linkable Format) files.
 
 extra:
   recipe-maintainers:

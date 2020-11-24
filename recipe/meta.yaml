@@ -21,15 +21,21 @@ requirements:
     - {{ compiler('cxx') }}
     - pkg-config
   host:
+    - bzip2
     - libarchive
+    - libcurl
+    - libmicrohttpd
     - m4
     - sqlite
+    - xz
     - zlib
+    - zstd
 
 
 test:
   requires:
     - {{ compiler('c') }}
+    - pkg-config
 
 about:
   home: https://fedorahosted.org/elfutils/

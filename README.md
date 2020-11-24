@@ -134,4 +134,5 @@ Feedstock Maintainers
 =====================
 
 * [@edisongustavo](https://github.com/edisongustavo/)
+* [@xhochy](https://github.com/xhochy/)
 

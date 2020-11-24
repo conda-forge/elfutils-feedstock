@@ -19,12 +19,13 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - pkg-config
   host:
-    - zlib
+    - libarchive
     - m4
-
-  run:
+    - sqlite
     - zlib
+
 
 test:
   requires:
@@ -39,3 +40,4 @@ about:
 extra:
   recipe-maintainers:
     - edisongustavo
+    - xhochy

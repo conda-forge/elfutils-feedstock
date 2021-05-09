@@ -22,6 +22,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - pkg-config
+    - make
   host:
     - bzip2
     - libarchive
@@ -32,7 +33,6 @@ requirements:
     - xz
     - zlib
     - zstd
-
 
 test:
   requires:

@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.bz2
+  fn: elfutils-{{ version }}.tar.bz2
   url: https://fedorahosted.org/releases/e/l/elfutils/{{ version }}/elfutils-{{ version }}.tar.bz2
   sha256: c3637c208d309d58714a51e61e63f1958808fead882e9b607506a29e5474f2c5
 

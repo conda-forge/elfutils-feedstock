@@ -2,7 +2,7 @@
 export LIBS="$(pkg-config --libs-only-l zlib) $LIBS"
 export LDFLAGS="$(pkg-config --libs-only-L zlib) $LDFLAGS"
 export CFLAGS="$(pkg-config --cflags zlib) -Wno-unused-but-set-variable -Wno-unused-variable $CFLAGS"
-./configure --prefix=$PREFIX --with-zlib --enable-libdebuginfod=dummy || cat config.log && exit 1
+./configure --prefix=$PREFIX --with-zlib --enable-libdebuginfod=dummy || (cat config.log && exit 1)
 make -j${CPU_COUNT}
 
 # Unfortunately some tests fail, so we can't run "make check" here.

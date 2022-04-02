@@ -10,6 +10,6 @@ mkdir build && cd build
 ../configure --prefix=$PREFIX --mandir=$PREFIX/man --enable-test-rpath --with-zlib --enable-libdebuginfod=dummy || (cat config.log && exit 1)
 make -j${CPU_COUNT}
 
-make check -j${CPU_COUNT} || (cat tests/test-suite.log && exit 1)
+make check -j${CPU_COUNT} V=1 || (cat tests/test-suite.log && exit 1)
 
 make install-strip

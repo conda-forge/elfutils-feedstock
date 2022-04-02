@@ -8,9 +8,12 @@ source:
   fn: elfutils-{{ version }}.tar.bz2
   url: https://fedorahosted.org/releases/e/l/elfutils/{{ version }}/elfutils-{{ version }}.tar.bz2
   sha256: 7f6fb9149b1673d38d9178a0d3e0fb8a1ec4f53a9f4c2ff89469609879641177
+  patches:
+    - patches/0001-rm-test-nlist-too-fragile.patch
+    - patches/0002-check-for-cap_sys_ptrace-when-needed-or-skip.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
   run_exports:
     - {{ pin_subpackage('elfutils', max_pin='x.x') }}
@@ -21,6 +24,9 @@ requirements:
     - {{ compiler('cxx') }}
     - pkg-config
     - make
+    - autoconf
+    - automake
+    - libtool
   host:
     - bzip2
     - libarchive

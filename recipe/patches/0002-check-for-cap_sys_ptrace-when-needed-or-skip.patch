@@ -1,0 +1,87 @@
+From 60323b0a3e6b84678130bc393147efbc34977ce1 Mon Sep 17 00:00:00 2001
+From: Tim Snyder <snyder.tim@gmail.com>
+Date: Sat, 2 Apr 2022 01:18:33 +0000
+Subject: [PATCH] check for cap_sys_ptrace when needed or skip
+
+---
+ tests/backtrace-subr.sh      | 13 +++++++++++++
+ tests/run-backtrace-data.sh  |  3 +++
+ tests/run-backtrace-dwarf.sh |  3 +++
+ tests/run-deleted.sh         |  2 ++
+ 4 files changed, 21 insertions(+)
+
+diff --git a/tests/backtrace-subr.sh b/tests/backtrace-subr.sh
+index 53c719d..8b58c50 100644
+--- a/tests/backtrace-subr.sh
++++ b/tests/backtrace-subr.sh
+@@ -90,6 +90,18 @@ check_unsupported()
+   fi
+ }
+ 
++check_cap_sys_ptrace()
++{
++  # if we don't have cap_sys_ptrace, then skip
++  if capsh --print | grep '^Current: =\s*$'; then
++    # current is empty, look in bounding
++    capsh --print | grep '^Bounding set .*[=,]cap_sys_ptrace[,$]' || ( echo "requires cap_sys_ptrace" >&2 && exit 77 )
++  else
++    # look in current
++    capsh --print | grep '^Current: =.*[ ,]cap_sys_ptrace[,$]' ||  ( echo "requires cap_sys_ptrace" >&2 && exit 77 )
++  fi
++}
++
+ check_native_unsupported()
+ {
+   err=$1
+@@ -129,6 +141,7 @@ check_native()
+ {
+   child=$1
+   tempfiles $child.{bt,err}
++  check_cap_sys_ptrace # --backtrace-exec requires ptrace
+   (set +ex; testrun ${abs_builddir}/backtrace --backtrace-exec=${abs_builddir}/$child 1>$child.bt 2>$child.err; true)
+   cat $child.{bt,err}
+   check_native_unsupported $child.err $child
+diff --git a/tests/run-backtrace-data.sh b/tests/run-backtrace-data.sh
+index f67a43e..501ebf7 100755
+--- a/tests/run-backtrace-data.sh
++++ b/tests/run-backtrace-data.sh
+@@ -21,6 +21,9 @@
+ # its own maps and registers and will find valgrinds instead.
+ unset VALGRIND_CMD
+ 
++# this test also requires ptrace
++check_cap_sys_ptrace
++
+ tempfiles data.{bt,err}
+ (set +ex;
+  testrun ${abs_builddir}/backtrace-data 1>data.bt 2>data.err;
+diff --git a/tests/run-backtrace-dwarf.sh b/tests/run-backtrace-dwarf.sh
+index 7ed795d..fe97231 100755
+--- a/tests/run-backtrace-dwarf.sh
++++ b/tests/run-backtrace-dwarf.sh
+@@ -23,6 +23,9 @@
+ # will warn and complain about various opcodes it doesn't understand...
+ unset VALGRIND_CMD
+ 
++# test also requires ptrace
++check_cap_sys_ptrace
++
+ tempfiles dwarf.{bt,err}
+ (set +ex; testrun ${abs_builddir}/backtrace-dwarf 1>dwarf.bt 2>dwarf.err; true)
+ cat dwarf.{bt,err}
+diff --git a/tests/run-deleted.sh b/tests/run-deleted.sh
+index a1ec1ec..a5e30ef 100755
+--- a/tests/run-deleted.sh
++++ b/tests/run-deleted.sh
+@@ -17,6 +17,8 @@
+ 
+ . $srcdir/backtrace-subr.sh
+ 
++check_cap_sys_ptrace
++
+ tempfiles deleted deleted-lib.so
+ cp -p ${abs_builddir}/deleted ${abs_builddir}/deleted-lib.so .
+ 
+-- 
+2.35.1
+

@@ -1,0 +1,35 @@
+From de1e62b970669080c78d9c2e070c9082364a1d21 Mon Sep 17 00:00:00 2001
+From: Tim Snyder <snyder.tim@gmail.com>
+Date: Fri, 1 Apr 2022 03:05:01 +0000
+Subject: [PATCH 1/2] rm test-nlist too fragile
+
+builds with special CFLAGS -g -O0 and doesn't let rpath in at all
+---
+ tests/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index bfb8b13..ba96eb1 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -33,7 +33,7 @@ tests_rpath = no
+ endif
+ 
+ check_PROGRAMS = arextract arsymtest newfile saridx scnnames sectiondump \
+-		  showptable update1 update2 update3 update4 test-nlist \
++		  showptable update1 update2 update3 update4 \
+ 		  show-die-info get-files next-files get-lines next-lines \
+ 		  get-pubnames \
+ 		  get-aranges allfcts line2addr addrscopes funcscopes \
+@@ -93,7 +93,7 @@ test-nlist$(EXEEXT): test-nlist.c
+ 	  $(AM_CPPFLAGS) $(CPPFLAGS) \
+ 	  $(test_nlist_CFLAGS) $(GCOV_FLAGS) -o $@ $< $(test_nlist_LDADD)
+ 
+-TESTS = run-arextract.sh run-arsymtest.sh run-ar.sh newfile test-nlist \
++TESTS = run-arextract.sh run-arsymtest.sh run-ar.sh newfile \
+ 	update1 update2 update3 update4 \
+ 	run-show-die-info.sh run-get-files.sh run-get-lines.sh \
+ 	run-next-files.sh run-next-lines.sh \
+-- 
+2.35.1
+

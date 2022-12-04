@@ -10,7 +10,7 @@ source:
   sha256: fb8b0e8d0802005b9a309c60c1d8de32dd2951b56f0c3a3cb56d21ce01595dff
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
   run_exports:
     - {{ pin_subpackage('elfutils', max_pin='x.x') }}

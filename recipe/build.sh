@@ -1,4 +1,6 @@
 #!/bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
 export LIBS="$(pkg-config --libs-only-l zlib) $LIBS"
 export LDFLAGS="$(pkg-config --libs-only-L zlib) -lrt $LDFLAGS"
 export CFLAGS="$(pkg-config --cflags zlib) -Wno-unused-but-set-variable -Wno-unused-variable -Wno-null-dereference $CFLAGS"

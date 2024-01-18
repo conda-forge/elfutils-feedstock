@@ -1,9 +1,12 @@
 #!/bin/bash
+
+set -exo pipefail
+
 export LIBS="$(pkg-config --libs-only-l zlib) $LIBS"
 export LDFLAGS="$(pkg-config --libs-only-L zlib) -lrt $LDFLAGS"
-export CFLAGS="$(pkg-config --cflags zlib) -Wno-unused-but-set-variable -Wno-unused-variable -Wno-null-dereference $CFLAGS"
+export CFLAGS="$(pkg-config --cflags zlib) -Wno-null-dereference $CFLAGS"
 ./configure --prefix=$PREFIX --with-zlib --enable-libdebuginfod=dummy || (cat config.log && exit 1)
-make -j${CPU_COUNT}
+make -j${CPU_COUNT} srcfiles_no_Werror=1
 
 # Unfortunately some tests fail, so we can't run "make check" here.
 # This is probably due to this package being a very sensitive package.

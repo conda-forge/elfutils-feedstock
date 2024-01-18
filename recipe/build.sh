@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -exuo pipefail
+set -exo pipefail
 
 export LIBS="$(pkg-config --libs-only-l zlib) $LIBS"
 export LDFLAGS="$(pkg-config --libs-only-L zlib) -lrt $LDFLAGS"

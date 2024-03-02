@@ -1,4 +1,4 @@
-{% set version = "0.190" %}
+{% set version = "0.191" %}
 
 package:
   name: elfutils
@@ -7,10 +7,10 @@ package:
 source:
   fn: elfutils-{{ version }}.tar.bz2
   url: https://fedorahosted.org/releases/e/l/elfutils/{{ version }}/elfutils-{{ version }}.tar.bz2
-  sha256: 8e00a3a9b5f04bc1dc273ae86281d2d26ed412020b391ffcc23198f10231d692
+  sha256: df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871
 
 build:
-  number: 1
+  number: 0
   skip: true  # [not linux]
   run_exports:
     - {{ pin_subpackage('elfutils', max_pin='x.x') }}

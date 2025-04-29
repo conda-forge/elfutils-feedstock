@@ -5,5 +5,7 @@ bot:
 github:
   branch_name: main
   tooling_branch_name: main
+conda_install_tool: pixi
+conda_build_tool: rattler-build
 conda_build:
   pkg_format: '2'

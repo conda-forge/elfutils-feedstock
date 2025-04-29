@@ -10,7 +10,6 @@ package:
 source:
   url: https://fedorahosted.org/releases/e/l/elfutils/${{ version }}/elfutils-${{ version }}.tar.bz2
   sha256: 7857f44b624f4d8d421df851aaae7b1402cfe6bcdd2d8049f15fc07d3dde7635
-  file_name: elfutils-${{ version }}.tar.bz2
 
 build:
   number: 0
@@ -23,6 +22,7 @@ requirements:
     - ${{ compiler('cxx') }}
     - pkg-config
     - make
+    - gettext-tools
   host:
     - bzip2
     - libarchive
@@ -37,7 +37,11 @@ requirements:
     - ${{ pin_subpackage('elfutils', upper_bound='x.x') }}
 
 tests:
-  - requirements:
+  - script: run_test.sh
+    files:
+      recipe:
+        - test_libdwarf.c
+    requirements:
       run:
         - ${{ compiler('c') }}
         - pkg-config

@@ -1,0 +1,58 @@
+schema_version: 1
+
+context:
+  version: 0.193
+
+package:
+  name: elfutils
+  version: ${{ version }}
+
+source:
+  url: https://fedorahosted.org/releases/e/l/elfutils/${{ version }}/elfutils-${{ version }}.tar.bz2
+  sha256: 7857f44b624f4d8d421df851aaae7b1402cfe6bcdd2d8049f15fc07d3dde7635
+
+build:
+  number: 0
+  skip: not linux
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - pkg-config
+    - make
+    - gettext-tools
+  host:
+    - bzip2
+    - libarchive
+    - libcurl
+    - libmicrohttpd
+    - m4
+    - sqlite
+    - liblzma-devel
+    - zlib
+    - zstd
+  run_exports:
+    - ${{ pin_subpackage('elfutils', upper_bound='x.x') }}
+
+tests:
+  - script: run_test.sh
+    files:
+      recipe:
+        - test_libdwarf.c
+    requirements:
+      run:
+        - ${{ compiler('c') }}
+        - pkg-config
+
+about:
+  license: LGPL-3.0-only
+  license_file: COPYING-LGPLV3
+  summary: a set of utilities and libraries for handling ELF (Executable and Linkable Format) files.
+  homepage: https://fedorahosted.org/elfutils/
+
+extra:
+  recipe-maintainers:
+    - edisongustavo
+    - xhochy

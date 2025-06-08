@@ -18,13 +18,16 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - pkg-config
     - make
   host:
     - bzip2
     - libarchive
+    # Ensure we link to the LGPL version
+    # Just in case...
+    - libarchive * lgpl_*
     - libcurl
     - libmicrohttpd
     - m4

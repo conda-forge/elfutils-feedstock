@@ -7,7 +7,7 @@
 
 [project]
 name = "elfutils-feedstock"
-version = "3.47.2"  # conda-smithy version used to generate this file
+version = "3.51.1"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/elfutils-feedstock"
 authors = ["@conda-forge/elfutils"]
 channels = ["conda-forge"]
@@ -37,12 +37,6 @@ description = "Build elfutils-feedstock with variant linux_aarch64_ directly (wi
 [tasks."inspect-linux_aarch64_"]
 cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_.yaml"
 description = "List contents of elfutils-feedstock packages built for variant linux_aarch64_"
-[tasks."build-linux_ppc64le_"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_ppc64le_.yaml"
-description = "Build elfutils-feedstock with variant linux_ppc64le_ directly (without setup scripts)"
-[tasks."inspect-linux_ppc64le_"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_ppc64le_.yaml"
-description = "List contents of elfutils-feedstock packages built for variant linux_ppc64le_"
 
 [feature.smithy.dependencies]
 conda-smithy = "*"

@@ -13,7 +13,9 @@ source:
 
 build:
   number: 0
-  skip: not linux
+  # ppc64le was dropped due to lack of maintainer interest
+  # https://github.com/conda-forge/conda-forge.github.io/issues/2510
+  skip: ppc64le or not linux
 
 requirements:
   build:

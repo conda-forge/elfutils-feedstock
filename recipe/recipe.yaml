@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 0.193
+  version: "0.194"
 
 package:
   name: elfutils
@@ -9,7 +9,9 @@ package:
 
 source:
   url: https://fedorahosted.org/releases/e/l/elfutils/${{ version }}/elfutils-${{ version }}.tar.bz2
-  sha256: 7857f44b624f4d8d421df851aaae7b1402cfe6bcdd2d8049f15fc07d3dde7635
+  sha256: 09e2ff033d39baa8b388a2d7fbc5390bfde99ae3b7c67c7daaf7433fbcf0f01e
+  patches:
+    - disable-werror.patch
 
 build:
   number: 0
@@ -25,6 +27,8 @@ requirements:
     - pkg-config
     - make
     - gettext-tools
+    - libtool
+    - automake
   host:
     - bzip2
     - libarchive

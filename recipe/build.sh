@@ -5,6 +5,7 @@ set -exo pipefail
 export LIBS="$(pkg-config --libs-only-l zlib) $LIBS"
 export LDFLAGS="$(pkg-config --libs-only-L zlib) -lrt $LDFLAGS"
 export CFLAGS="$(pkg-config --cflags zlib) -Wno-null-dereference $CFLAGS"
+autoreconf -if
 ./configure --prefix=$PREFIX --with-zlib --enable-libdebuginfod=dummy || (cat config.log && exit 1)
 make -j${CPU_COUNT} srcfiles_no_Werror=1
 

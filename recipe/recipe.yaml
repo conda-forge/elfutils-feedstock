@@ -27,6 +27,8 @@ requirements:
     - pkg-config
     - make
     - gettext-tools
+    - libtool
+    - automake
   host:
     - bzip2
     - libarchive

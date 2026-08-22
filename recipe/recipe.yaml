@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.194"
+  version: "0.196"
 
 package:
   name: elfutils
@@ -9,15 +9,13 @@ package:
 
 source:
   url: https://fedorahosted.org/releases/e/l/elfutils/${{ version }}/elfutils-${{ version }}.tar.bz2
-  sha256: 09e2ff033d39baa8b388a2d7fbc5390bfde99ae3b7c67c7daaf7433fbcf0f01e
+  sha256: fd5cc6b77ad6773cac93cb3f415f9318ac3b3455eecf801f6b4a742c4f6c7209
   patches:
     - disable-werror.patch
 
 build:
   number: 0
-  # ppc64le was dropped due to lack of maintainer interest
-  # https://github.com/conda-forge/conda-forge.github.io/issues/2510
-  skip: ppc64le or not linux
+  skip: not linux
 
 requirements:
   build:
@@ -29,13 +27,12 @@ requirements:
     - gettext-tools
     - libtool
     - automake
+    # libcpu expands its instruction tables with m4 while building, so this is
+    # a build tool and must run on the build platform when cross-compiling.
+    - m4
   host:
     - bzip2
     - libarchive
-    - libcurl
-    - libmicrohttpd
-    - m4
-    - sqlite
     - liblzma-devel
     - zlib
     - zstd
@@ -61,4 +58,5 @@ about:
 extra:
   recipe-maintainers:
     - edisongustavo
+    - ehfd
     - xhochy

@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.196"
+  version: "0.197"
 
 package:
   name: elfutils
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://fedorahosted.org/releases/e/l/elfutils/${{ version }}/elfutils-${{ version }}.tar.bz2
-  sha256: fd5cc6b77ad6773cac93cb3f415f9318ac3b3455eecf801f6b4a742c4f6c7209
+  sha256: 1fdf525f22dcf796d99a99ba3ea00a1f7b1ae5421bc62e8443a708920b99b904
   patches:
     - disable-werror.patch
 
